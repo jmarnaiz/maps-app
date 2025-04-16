@@ -7,7 +7,7 @@ import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
-  imports: [AsyncPipe, RouterLink],
+  imports: [RouterLink],
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent {

@@ -1,1 +1,30 @@
-<p>markers-page works!</p>,
+<div #map class="h-[calc(100vh-64px)] bg-red-500"></div>
+
+<section class="fixed w-fit bg-amber-100 rounded top-20 left-5 p-2">
+  <h2 class="text-xl font-bold text-black mb-2">Markers</h2>
+  <div class="flex flex-col gap-2">
+    @for (marker of markers(); track marker.id) {
+    <label
+      class="input bg-amber-100 cursor-pointer"
+      (click)="flyToMarker(marker.mapboxMarker.getLngLat())"
+      (dblclick)="deleteMarker(marker)"
+    >
+      <span class="label bg-blue-200 rounded text-black text-xs]">{{
+        getFormattedCoordinates(marker)
+      }}</span>
+      <input
+        type="radio"
+        name="radio-{{ marker.id }}"
+        class="radio"
+        [style]="{ backgroundColor: marker.mapboxMarker._color }"
+        checked="checked"
+      />
+    </label>
+
+    } @empty {
+    <div class="flex justify-center items-center bg-blue-200 rounded mx-4 p-2">
+      <p class="text-xs text-secondary">No markers</p>
+    </div>
+    }
+  </div>
+</section>
